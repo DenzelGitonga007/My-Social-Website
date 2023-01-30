@@ -31,12 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Register the app, account
+    'account', # Place it first to ensure the custom auth templates are used by default, not the ones in django.contrib.admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Register the app, account
+    'account',
 ]
 
 MIDDLEWARE = [
