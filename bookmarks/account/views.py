@@ -11,14 +11,14 @@ from .forms import LoginForm
 # User login
 def user_login(request):
     if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
+        form = LoginForm(request.POST) # instantiate the form
+        if form.is_valid(): # validate the inputs submitted
             cd = form.cleaned_data
             user = authenticate(
                 request,
                 username = cd['username'],
                 password = cd['password']
-                )
+                ) # authenticate the user from the db
         if user is not None:
             if user.is_active:
                 login(request, user)
