@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # The path to the login view
     # path('login/', include('account.urls')) # did not work
-    path('', include('account.urls'))
+    path('', include('account.urls')) # includes the urls declared in the urls file of the account app
 ]
