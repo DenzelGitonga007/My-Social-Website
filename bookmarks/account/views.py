@@ -6,6 +6,8 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 # Import the LoginForm class
 from .forms import LoginForm
+# Using default auth framework for login view
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # User login
@@ -30,3 +32,11 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
+
+# Default login view
+@login_required
+def dashboard(request):
+    return render(request,
+    'account/dashboard.html',
+    {'section': 'dashboard'}
+    )
