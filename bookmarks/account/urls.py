@@ -8,8 +8,7 @@ urlpatterns = [
     # path('login/', views.user_login, name='login'), # 127.0.0.1:8000/login/
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout', auth_views.LogoutView.as_view(), name='logout'),
-    # Dashboard view
-    path('', views.dashboard, name='dashboard'),
+    
 
     # password change
     path('password-change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
@@ -17,5 +16,11 @@ urlpatterns = [
     path('password-change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
 
     # Resetting password
-    
+    path('password-reset', auth_views.PasswordResetView.as_view(), name="password_reset"),
+    path('password-rest=et/done/', auth_views.PasswordChangeDoneView.as_view(), name="password_reset_done"),
+    path('password-reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path('password-reset/complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
+
+    # Dashboard view
+    path('', views.dashboard, name='dashboard'),
 ]
