@@ -2,6 +2,7 @@ from django import forms
 # For the registration form
 from django.contrib.auth.models import User
 
+
 # Login form
 class LoginForm(forms.Form):
     # The input fields
@@ -13,9 +14,11 @@ class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
 
-class Meta:
-    model = User
-    fields = ['username', 'first_name', 'email']
+
+    # The class meta ought to be inside the parent class, UserRegistrationForm()
+    class Meta:
+        model = User
+        fields = ['username', 'first_name', 'email']
 
 # Validate password2
 def clean_password2(self):
