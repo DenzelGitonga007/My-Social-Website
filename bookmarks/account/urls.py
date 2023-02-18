@@ -26,6 +26,9 @@ urlpatterns = [
 
 
     # using the default django authentications
-    path('', include('django.contrib.auth.urls'))
+    path('', include('django.contrib.auth.urls')),
+
+    # User reg
+    path('register/', views.register, name='register'),
 
 ]
