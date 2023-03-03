@@ -16,9 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# To handle images
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # The path to the login view
     # path('login/', include('account.urls')) # did not work
     path('', include('account.urls')) # includes the urls declared in the urls file of the account app
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIAL_URL, document_root=settings.MEDIA_ROOT)
+    
