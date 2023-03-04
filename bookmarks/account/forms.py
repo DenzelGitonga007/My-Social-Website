@@ -2,6 +2,8 @@ from django import forms
 # For the registration form
 from django.contrib.auth.models import User
 
+# To customize the user profile
+from . models import Profile
 
 # Login form
 class LoginForm(forms.Form):
@@ -26,3 +28,14 @@ def clean_password2(self):
     if cd['password'] != cd['password2']:
         raise forms.ValidationError('Passwords don\'t match.')
     return cd['password2']
+
+# To customize the user profile
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['date_of_birth', 'photo']
