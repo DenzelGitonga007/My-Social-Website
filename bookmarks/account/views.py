@@ -5,7 +5,7 @@ from django.shortcuts import render
 # Import the authentication framework
 from django.contrib.auth import authenticate, login
 # Import the LoginForm class
-from .forms import LoginForm, UserRegistrationForm, UserRegistrationForm, ProfileEditForm
+from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 # Using default auth framework for login view
 from django.contrib.auth.decorators import login_required
 
@@ -77,6 +77,8 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            # After saving the data
+            return render(request, 'edit_done.html', {'section': 'dashboard'})
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(
