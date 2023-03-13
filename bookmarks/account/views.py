@@ -12,6 +12,9 @@ from django.contrib.auth.decorators import login_required
 # The profile model
 from . models import Profile
 
+# For the messages
+from django.contrib import messages
+
 # Create your views here.
 # User login
 def user_login(request):
@@ -77,6 +80,11 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            # The messages
+            messages.success(request, 'Profile updated '\
+            'successfully')
+        else:
+            messages.error(request, 'Error updating your profile')
             # After saving the data
             return render(request, 'edit_done.html', {'section': 'dashboard'})
     else:
