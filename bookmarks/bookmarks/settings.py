@@ -136,3 +136,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # To handle the images
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Custom authentication
+AUTHENTICATION_BACKENDS = [
+ 'django.contrib.auth.backends.ModelBackend', # default authentication
+ 'account.authentication.EmailAuthBackend', # customized authentication
+]
