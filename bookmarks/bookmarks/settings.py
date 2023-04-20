@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Sharing images
-    'images.app.ImagesConfig',
+    'images.apps.ImagesConfig',
 ]
 
 MIDDLEWARE = [
