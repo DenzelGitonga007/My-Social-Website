@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Django extensions
     'django_extensions',
+    # Thumbnails
+    'easy_thumbnails',
     # Sharing images
     'images.apps.ImagesConfig',
 ]
