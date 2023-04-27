@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Django extensions
+    'django_extensions',
     # Sharing images
     'images.apps.ImagesConfig',
 ]
@@ -144,3 +146,10 @@ AUTHENTICATION_BACKENDS = [
  'django.contrib.auth.backends.ModelBackend', # default authentication
  'account.authentication.EmailAuthBackend', # customized authentication
 ]
+
+
+# Mime
+if DEBUG:
+ import mimetypes
+ mimetypes.add_type('application/javascript', '.js', True)
+ mimetypes.add_type('text/css', '.css', True)
