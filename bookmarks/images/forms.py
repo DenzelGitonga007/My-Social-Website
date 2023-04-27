@@ -1,4 +1,3 @@
-
 # Default save method, and request
 from django.core.files.base import ContentFile
 from django.utils.text import slugify
@@ -12,7 +11,7 @@ class ImageCreateForm(forms.ModelForm):
     class Meta:
         # Inherit from the Image model
         model = Image(forms.ModelForm)
-        field = ['title', 'url', 'description'] # the fields for the user to fill
+        fields = ['title', 'url', 'description'] # the fields for the user to fill
         widgets = {
             'url' : forms.HiddenInput,
         }
@@ -26,9 +25,7 @@ class ImageCreateForm(forms.ModelForm):
             'match valid image extensions.')
         return url
 
-    def save(self, force_insert=False,
-        force_update=False,
-        commit=True):
+    def save(self, force_insert=False, force_update=False,commit=True):
         image = super().save(commit=False)
         image_url = self.cleaned_data['url']
         name = slugify(image.title)
@@ -37,8 +34,7 @@ class ImageCreateForm(forms.ModelForm):
         # download image from the given URL
         response = requests.get(image_url)
         image.image.save(image_name,
-        ContentFile(response.content), 
-        save=False)
+        ContentFile(response.content), save=False)
         if commit:
             image.save()
         return image

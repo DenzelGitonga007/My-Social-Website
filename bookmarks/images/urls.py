@@ -1,5 +1,5 @@
 from django.urls import path
-from . views import image_create
+from . import views
 
 app_name = 'images'
 
